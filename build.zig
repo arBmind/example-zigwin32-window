@@ -12,9 +12,7 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
-    const win32_module = b.addModule("zigwin32", .{
-        .source_file = .{ .path = "zigwin32/win32.zig" },
-    });
+    const win32_module = b.dependency("win32", .{}).module("zigwin32");
 
     exe.addModule("zigwin32", win32_module);
 
