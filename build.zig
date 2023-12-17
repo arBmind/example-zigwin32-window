@@ -14,6 +14,7 @@ pub fn build(b: *std.Build) void {
     const win32_module = b.dependency("win32", .{}).module("zigwin32");
 
     exe.addModule("zigwin32", win32_module);
+    exe.subsystem = .Windows;
 
     b.installArtifact(exe);
 
